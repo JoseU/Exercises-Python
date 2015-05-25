@@ -1,4 +1,9 @@
+# Librerias para OSC
+import argparse
+from pythonosc import osc_message_builder
+from pythonosc import udp_client
 
+# Librerias de Tweepy y Json para mapear
 import tweepy
 import json
 import time
@@ -31,24 +36,43 @@ class StdOutListener(tweepy.StreamListener):
            self.contador+=1
         
  
-        print self.contador
+        print (self.contador)
         return True
 
     def on_error(self, status):
         print (status)
    
+if __name__ == "__main__":
+    # Inicializando ips 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ip", default="127.0.0.1",
+         help="The ip of the OSC server")
+    parser.add_argument("--port", type=int, default=8000,
+         help="The port the OSC server is listening on")
+    args = parser.parse_args()
 
-l = StdOutListener()
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+    client = udp_client.UDPClient(args.ip, args.port)
 
-print "Mostrando todos los tweets para #ea5:"
+    keyA = input("tecla A :")
 
-    # There are different kinds of streams: public stream, user stream, multi-user streams
-    # In this example follow #programming tag
-    # For more details refer to https://dev.twitter.com/docs/streaming-apis
-stream = tweepy.Stream(auth, l)
-stream.filter(track=['#ea5'])
+    if keyA == 'a' :
+
+        msg = osc_message_builder.OscMessageBuilder(address = "/tecla")
+        msg.add_arg(3)
+        msg = msg.build()
+        client.send(msg)
+
+    l = StdOutListener()
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    print ("Mostrando todos los tweets para #ea5:")
+
+        # There are different kinds of streams: public stream, user stream, multi-user streams
+        # In this example follow #programming tag
+        # For more details refer to https://dev.twitter.com/docs/streaming-apis
+    stream = tweepy.Stream(auth, l)
+    stream.filter(track=['#ea5'])
 
 
 
