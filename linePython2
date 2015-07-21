@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+
+import time
+
+
+valor = None  
+
+def rampa(inicio, final, tiempo, assign) :
+	
+	count = inicio
+
+	while True:
+		
+	    print count
+	   
+	    assign = count
+	    
+
+	    time.sleep(tiempo)
+	    count += 1
+	    pass 
+
+	    if count >= final:
+	        break
+		
+
+	
+
+rampa1 = rampa(40, 50, 0.3, valor)
+
+
+
+
+
+#while True :
+#	pass
+#	rampa1 = rampa(45, 80, 1000)
+
+#	print(rampa1)

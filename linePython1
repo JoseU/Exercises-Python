@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+
+import time
+
+
+rampaRef = 0 
+
+def rampa(inicio, fin, intervalo) :
+	
+	while (inicio < fin) : 
+
+		time.sleep(intervalo)
+		inicio += 1
+		pass		 
+
+while True:
+
+	rampa1 = rampa(40, 50, 0.5)
+	print rampa1
+
+
+
+
+#while True :
+#	pass
+#	rampa1 = rampa(45, 80, 1000)
+
+#	print(rampa1)

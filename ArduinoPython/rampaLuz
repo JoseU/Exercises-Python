@@ -1,0 +1,27 @@
+import time
+
+iluminar = 0
+
+def latido(tiempoTotal, accionar) :
+	
+
+	
+	pasos = 10
+	pasosPwm = 1/ pasos
+	
+	while accionar == True : 
+
+		#board.digital[12].write(1)
+
+		iluminar = iluminar + pasosPwm
+
+		print iluminar
+
+		time.sleep (tiempoTotal/pasos)
+
+		if iluminar == 1 : 
+			break
+			#board.digital[12].write(0 """
+
+
+latido(10, True)

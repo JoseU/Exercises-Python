@@ -41,27 +41,26 @@ class StdOutListener(tweepy.StreamListener):
 
     def on_error(self, status):
         print (status)
-   
-if __name__ == "__main__":
-    # Inicializando ips 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", default="127.0.0.1",
-         help="The ip of the OSC server")
-    parser.add_argument("--port", type=int, default=8000,
-         help="The port the OSC server is listening on")
-    args = parser.parse_args()
 
-    client = udp_client.UDPClient(args.ip, args.port)
+    def osc_data (self) :
+        # Inicializando ips 
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--ip", default="127.0.0.1",
+             help="The ip of the OSC server")
+        parser.add_argument("--port", type=int, default=8000,
+             help="The port the OSC server is listening on")
+        args = parser.parse_args()
 
-    keyA = input("tecla A :")
-
-    if keyA == 'a' :
-
+        client = udp_client.UDPClient(args.ip, args.port)
+       
         msg = osc_message_builder.OscMessageBuilder(address = "/tecla")
         msg.add_arg(3)
         msg = msg.build()
         client.send(msg)
 
+   
+if __name__ == "__main__":
+    
     l = StdOutListener()
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)

@@ -1,0 +1,28 @@
+#!/usr/bin/python
+
+
+import time
+
+
+
+
+
+inicio = 40
+fin = 50
+intervalo = 0.5
+
+
+#def rampa(inicio, fin, intervalo) : #intervalo en milisegundos
+
+for x in xrange(inicio,fin):
+	print x
+	
+	time.sleep(intervalo)
+	
+	pass
+
+#while True :
+#	pass
+#	rampa1 = rampa(45, 80, 1000)
+
+#	print(rampa1)
