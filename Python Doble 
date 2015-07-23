@@ -1,0 +1,41 @@
+import time
+
+
+
+
+class forConsultas(object):
+
+	"""docstring for consulta"""
+	def __init__(self, consulta):
+		
+		self.consulta = consulta
+		
+		
+		def opciones(self) :
+
+			if self.consulta == 0 : 
+				for x in xrange(1,10):
+					print "a, a, a"
+					time.sleep(0.2)
+
+			if self.consulta == 1 : 
+				for x in xrange(1,10):
+					print "A, A, A"
+					time.sleep(0.2)
+
+count = 0
+
+while True : 
+
+	encuesta = input("cual es la opcion (0, 1): ")
+	
+	count = count + 1
+	print count
+
+	if count%2 == 0 : 
+		encuesta1 = forConsultas(encuesta)
+		encuesta1.opciones()
+
+	#if count == 1 : 
+	#	encuesta2 = forConsultas(encuesta)
+	#	encuesta2.opciones()

@@ -1,0 +1,16 @@
+import time
+
+while True : 
+
+	consulta: input('dime la opción')
+
+	if consulta == 0 : 
+		for x in xrange(1,10):
+			print "a, a, a"
+			time.sleep(0.2)
+
+	if consulta == 1 : 
+		for x in xrange(1,10):
+			print "A, A, A"
+			time.sleep(0.2)
+
